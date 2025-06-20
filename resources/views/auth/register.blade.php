@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class = "bg-white p-8 rounded-lg shadow-lg w-1/2 max-w-xl  bg-white/30 backdrop-blur border border-white/20">
     <div class="prose mx-auto text-center">
         <h2>Sign up</h2>
     </div>
@@ -41,4 +41,6 @@
             <button type="submit" class="btn btn-primary btn-block normal-case">Sign up</button>
         </form>
     </div>
+</div>
+    
 @endsection

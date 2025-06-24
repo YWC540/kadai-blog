@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class = "bg-white p-8 rounded-lg shadow-lg w-1/2 max-w-xl  bg-white/30 backdrop-blur border border-white/20">
+    <div class = "bg-white p-8 rounded-lg shadow-lg w-1/2 max-w-2xl  bg-white/30 backdrop-blur border border-white/20">
         <div class="prose mx-auto text-center">
             <h2>Log in</h2>
         </div>

@@ -8,14 +8,11 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class = "m-0 p-0 overflow-hidden container mx-auto h-screen w-screen bg-gradient-to-r from-blue-500 to-purple-600">
+    <body class = "m-0 p-0 overflow-hidden w-full h-screen w-screen bg-gradient-to-r from-blue-500 to-purple-600">
+        
         {{-- ナビゲーションバー --}}
-            @include('commons.navbar')
-        <div class="min-h-screen flex flex-col justify-center items-center">
-            
-            {{-- エラーメッセージ --}}
-            @include('commons.error_messages')
-
+        @include('commons.navbar')
+        <div class="flex flex-col">
             @yield('content')
         </div>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController; 
+use App\Http\Controllers\HomeController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +17,14 @@ use App\Http\Controllers\UsersController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    if (Auth::check()) {
+        return redirect('/home');
+    } else {
+        return redirect('/login');
+    }
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);

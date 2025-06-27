@@ -1,4 +1,4 @@
-<header class="mb-4">
+<header class="mb-4 sticky top-0 z-50 bg-black text-white shadow-md">
     <nav class="navbar text-neutral-content">
         {{-- トップページへのリンク --}}
         <div class="flex-1">
@@ -9,8 +9,8 @@
             <div class="dropdown dropdown-end">
                 @if (Auth::check())
                 <div tabindex="0" role="button" class="btn btn-ghost btn-square avatar">
-                    <div class="w-10 rounded-full">
-                        <img src="https://ui-avatars.com/api/?name=User&size=40&rounded=false">
+                    <div class="w-10 rounded-full mr-4">
+                        <img src="{{ $user->avatar_path ?? asset('default-avatar.png') }}">
                     </div>
                 </div>
                 <form method="POST" action="{{ route('logout') }}">
@@ -19,7 +19,7 @@
                         {{-- ユーザー一覧ページへのリンク --}}
                         <li><a class="text-black {{ request()->routeIs('login') ? 'bg-black/80 backdrop-blur-md shadow-xl font-semibold' : 'hover:bg-blue-100'}}" href="{{ route('users.index') }}">Users</a></li>
                         {{-- ユーザー詳細ページへのリンク --}}
-                        <li><a class="text-black {{ request()->routeIs('login') ? 'bg-black/80 backdrop-blur-md shadow-xl font-semibold' : 'hover:bg-blue-100'}}" href="{{ route('users.show', Auth::user()->id) }}">{{ Auth::user()->name }}&#39;s profile</a></li>
+                        <li><a class="text-black {{ request()->routeIs('login') ? 'bg-black/80 backdrop-blur-md shadow-xl font-semibold' : 'hover:bg-blue-100'}}" href="{{ route('users.edit', Auth::user()->id) }}">{{ Auth::user()->name }}&#39;s profile</a></li>
                         <li class="divider lg:hidden"></li>
                         {{-- ログアウトへのリンク --}}
                         <li><a class="text-black {{ request()->routeIs('login') ? 'bg-black/80 backdrop-blur-md shadow-xl font-semibold' : 'hover:bg-blue-100'}}" href="#" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>

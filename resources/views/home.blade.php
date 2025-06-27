@@ -15,7 +15,17 @@
                 @include('homepage.like-ranking')
             </div>
             <div class="col-span-10">
-                @include('homepage.blog-list', ['blogs' => $blogs])
+                @if ($blogs->isEmpty())
+                    <p class="text-gray-500">There is no blog yet~</p>
+                @else
+                    @foreach ($blogs as $blog)
+                        @include('homepage.blog-list', ['blog' => $blog])
+                    @endforeach
+
+                    <div class="mt-6 flex justify-center">
+                        {{ $blogs->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -4,14 +4,14 @@
         <!-- Avatar -->
         <div class="col-span-2 flex justify-center">
             <div class="bg-white p-4 rounded shadow aspect-square flex items-center justify-center">
-                <img src="https://via.placeholder.com/32x32?text=Avatar" class="rounded-full w-32 h-32 object-cover">
+                <img src="{{ $user->avatar_path ?? asset('default-avatar.png') }}" class="rounded-full w-32 h-32 object-cover">
             </div>
         </div>
 
         <!-- edit -->
         <div class="col-span-10">
             <div class="bg-white p-6 rounded shadow space-y-4">
-                <form method="POST" action="blog/store" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                     @csrf
                     
                     <!-- text -->
@@ -40,3 +40,29 @@
         </div>
     </div>
 </div>
+
+<script>
+function previewImage(input) {
+    const preview = document.getElementById('preview');
+    const wrapper = document.getElementById('preview-wrapper');
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            wrapper.classList.remove('hidden');
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+function removeImage() {
+    const input = document.getElementById('image');
+    const preview = document.getElementById('preview');
+    const wrapper = document.getElementById('preview-wrapper');
+    
+    input.value = '';
+    preview.src = '';
+    wrapper.classList.add('hidden');
+}
+</script>
